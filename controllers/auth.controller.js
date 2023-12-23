@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
-import db from '../config/db.js';
+import db from '../config/db.config.js';
 import { v4 as uuidv4 } from 'uuid';
 import { hashPassword , comparePassword } from '../utils/hash.js';
 
 export const signup = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body)
 
     const users = await db.collection('users');
     const existingUser = await users.findOne({
